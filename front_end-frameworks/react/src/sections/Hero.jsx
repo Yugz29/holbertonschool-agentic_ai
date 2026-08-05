@@ -8,7 +8,7 @@ function Hero() {
         <h1 className="mt-6 text-5xl leading-none font-black tracking-tight md:text-7xl">
           Build smarter workflows
           <br />
-          with Agentic AI
+          <span className="text-violet-300">with Agentic AI</span>
         </h1>
         <p className="mx-auto mt-6 max-w-3xl text-sm text-slate-300 md:text-base">
           Agentic AI refers to artificial intelligence systems designed to
