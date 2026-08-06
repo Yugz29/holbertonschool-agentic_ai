@@ -3,7 +3,7 @@ function Hero() {
     <section id="hero-section" className="bg-black pt-36 pb-24 text-white">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <p className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs font-medium text-violet-300">
-          The future of coding
+          ✦ The future of coding ✦
         </p>
         <h1 className="mt-6 text-5xl leading-none font-black tracking-tight md:text-7xl">
           Build smarter workflows

@@ -6,7 +6,7 @@ function About() {
       <div className="mx-auto max-w-6xl px-6">
         <header className="mx-auto max-w-3xl text-center">
           <p className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs font-medium text-violet-300">
-            What is Agentic AI?
+            ✦ What is Agentic AI? ✦
           </p>
 
           <h2 className="mt-6 text-4xl leading-none font-black tracking-tight md:text-5xl">
