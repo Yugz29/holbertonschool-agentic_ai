@@ -25,20 +25,20 @@ function Insights() {
 
   return (
     <section className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
           <span className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
             ✦ Insights ✦
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-black tracking-tight leading-none text-white">
+          <h2 className="mt-6 text-4xl leading-none font-black tracking-tight text-white md:text-5xl">
             Explore Agentic AI
             <br />
             <span className="text-violet-400">Through real-world scenes</span>
           </h2>
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {insights.map((insight, index) => (
             <InsightCard
               key={index}
