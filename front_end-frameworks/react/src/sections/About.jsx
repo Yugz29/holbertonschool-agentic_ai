@@ -1,19 +1,20 @@
 import steps from "../data/steps";
+import SectionBadge from "../components/ui/SectionBadge";
+import SectionTitle from "../components/ui/SectionTitle";
+import StepItem from "../components/StepItem";
 
 function About() {
   return (
     <section id="about-section" className="bg-black py-24 text-white">
       <div className="mx-auto max-w-6xl px-6">
         <header className="mx-auto max-w-3xl text-center">
-          <p className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs font-medium text-violet-300">
-            ✦ What is Agentic AI? ✦
-          </p>
+          <SectionBadge>✦ What is Agentic AI? ✦</SectionBadge>
 
-          <h2 className="mt-6 text-4xl leading-none font-black tracking-tight md:text-5xl">
-            AI that does more than answer
-            <br />
-            <span className="text-violet-300">It acts with purpose</span>
-          </h2>
+          <SectionTitle
+            line1="AI that does more than answer"
+            line2="It acts with purpose"
+            accent="text-violet-300"
+          />
 
           <p className="mt-6 text-sm leading-6 text-slate-300 md:text-base md:leading-7">
             Agentic AI refers to artificial intelligence systems designed to
@@ -50,21 +51,12 @@ function About() {
 
           <ol className="space-y-8">
             {steps.map((step) => (
-              <li key={step.number} className="flex items-start gap-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-violet-500 font-semibold text-white shadow-lg shadow-violet-500/40">
-                  {step.number}
-                </span>
-
-                <div>
-                  <h3 className="text-base font-semibold text-white">
-                    {step.title}
-                  </h3>
-
-                  <p className="mt-1 text-sm leading-6 text-slate-400">
-                    {step.description}
-                  </p>
-                </div>
-              </li>
+              <StepItem
+                key={step.number}
+                number={step.number}
+                title={step.title}
+                description={step.description}
+              />
             ))}
           </ol>
         </div>

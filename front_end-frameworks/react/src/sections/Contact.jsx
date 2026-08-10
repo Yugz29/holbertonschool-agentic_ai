@@ -8,6 +8,9 @@ import {
   MessageSquare,
   ArrowRight,
 } from "lucide-react";
+import Button from "../components/ui/Button";
+import SectionBadge from "../components/ui/SectionBadge";
+import SectionTitle from "../components/ui/SectionTitle";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -55,36 +58,45 @@ function Contact() {
   }
 
   return (
-    <section id="contact-section" className="py-24">
-      <div className="mx-auto max-w-6xl px-6 text-white">
-        <div className="text-center">
-          <span className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            • Start your AI journey •
-          </span>
+    <section
+      id="contact-section"
+      className="relative overflow-hidden border-b border-slate-900 py-24"
+    >
+      {/* Base gradient with violet (top-left) and blue (bottom-right) glows */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(168,85,247,0.35),transparent_32%),radial-gradient(circle_at_85%_60%,rgba(59,130,246,0.25),transparent_28%),linear-gradient(135deg,#1e1238_0%,#0f172a_45%,#020617_100%)]" />
 
-          <h2 className="mt-6 text-4xl leading-none font-black tracking-tight text-white md:text-5xl">
-            Ready to Explore
-            <br />
-            <span className="text-violet-400">Agentic AI?</span>
-          </h2>
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-[size:72px_72px] opacity-30" />
+
+      {/* Fade to black at the bottom */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-black" />
+
+      {/* Radial vignette to darken the edges */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_0%,rgba(2,6,23,0.45)_75%)]" />
+
+      <div className="relative mx-auto max-w-6xl px-6 text-white">
+        <div className="text-center">
+          <SectionBadge>• Start your AI journey •</SectionBadge>
+
+          <SectionTitle line1="Ready to Explore" line2="Agentic AI?" />
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
+            <Button
               href="https://www.holbertonschool.com"
+              variant="primary"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold shadow-lg shadow-violet-500/40 hover:bg-violet-600"
             >
               Enroll at Holberton School <ArrowRight size={16} />
-            </a>
-            <a
+            </Button>
+            <Button
               href="https://www.holbertonschool.com/contact"
+              variant="secondary"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border border-slate-800 bg-slate-950 px-4 py-2 font-semibold hover:bg-slate-900"
             >
               Need more information?
-            </a>
+            </Button>
           </div>
 
           <ul className="mt-8 flex flex-col items-center justify-center gap-6 text-sm text-slate-300 sm:flex-row">
@@ -180,13 +192,14 @@ function Contact() {
             />
           </div>
 
-          <button
+          <Button
+            variant="primary"
             type="submit"
             disabled={!isFormValid || isSending}
-            className="mt-6 w-full rounded-md bg-violet-500 px-4 py-2 font-semibold shadow-lg shadow-violet-500/40 hover:bg-violet-600 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-violet-500"
+            className="mt-6 w-full disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-violet-600"
           >
             {isSending ? "Sending..." : "Send message"}
-          </button>
+          </Button>
 
           <p className="mt-4 text-center text-sm text-slate-400">{feedback}</p>
         </form>

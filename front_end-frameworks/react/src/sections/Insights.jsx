@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getInsights } from "../services/insightsService";
 import InsightCard from "../components/InsightCard";
+import SectionBadge from "../components/ui/SectionBadge";
+import SectionTitle from "../components/ui/SectionTitle";
 
 function Insights() {
   const [insights, setInsights] = useState([]);
@@ -24,18 +26,15 @@ function Insights() {
   }
 
   return (
-    <section className="py-24">
+    <section id="insights-section" className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
-          <span className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            ✦ Insights ✦
-          </span>
+          <SectionBadge>✦ Insights ✦</SectionBadge>
 
-          <h2 className="mt-6 text-4xl leading-none font-black tracking-tight text-white md:text-5xl">
-            Explore Agentic AI
-            <br />
-            <span className="text-violet-400">Through real-world scenes</span>
-          </h2>
+          <SectionTitle
+            line1="Explore Agentic AI"
+            line2="Through real-world scenes"
+          />
         </div>
 
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
