@@ -1,16 +1,10 @@
+import Brand from "../ui/Brand";
+
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-[#090b1f]">
       <div className="mx-auto grid h-20 max-w-7xl grid-cols-2 items-center px-6 md:grid-cols-3 md:px-8">
-        <a href="#top" className="flex items-center gap-3 justify-self-start">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 text-white shadow-lg shadow-violet-600/25">
-            ✣
-          </span>
-
-          <span className="text-base font-semibold text-white md:text-lg">
-            Agentic AI
-          </span>
-        </a>
+        <Brand href="#top" variant="header" />
 
         <nav className="hidden md:block">
           <ul className="flex items-center justify-center gap-12">
