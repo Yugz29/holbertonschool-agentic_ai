@@ -4,7 +4,7 @@ A responsive, dark-themed landing page for a fictional **Agentic AI** product, b
 
 This project is part of the [Holberton School — Front-end Frameworks](https://github.com/fchavonet/curriculum-holbertonschool-front_end-frameworks). It focuses on component-driven architecture, reusable UI primitives, data/service separation, controlled forms, and an accessible, performant build.
 
-🔗 **Live demo:** https://yugz29.github.io/holbertonschool-agentic_ai/
+🔗 **Live demo:** https://yugz29.github.io/holbertonschool-agentic_ai/react/
 
 ---
 
@@ -83,12 +83,12 @@ npm install
 
 | Command | Description | URL |
 |---------|-------------|-----|
-| `npm run dev` | Start the dev server (HMR) | http://localhost:3000/holbertonschool-agentic_ai/ |
+| `npm run dev` | Start the dev server (HMR) | http://localhost:3000/holbertonschool-agentic_ai/react/ |
 | `npm run build` | Build for production into `dist/` | — |
-| `npm run preview` | Serve the production build locally | http://localhost:4173/holbertonschool-agentic_ai/ |
+| `npm run preview` | Serve the production build locally | http://localhost:4173/holbertonschool-agentic_ai/react/ |
 | `npm run lint` | Run ESLint | — |
 | `npm run fix` | Auto-fix ESLint issues | — |
-| `npm run deploy` | Build and publish to GitHub Pages | — |
+| `npm run deploy` | Build and publish to the `/react/` subfolder of GitHub Pages | — |
 
 > **Auditing performance:** run Lighthouse against the **preview** build (`npm run preview`), not the dev server. The dev server ships unminified code with HMR and will always score poorly — that is expected and not representative of production.
 
@@ -100,7 +100,7 @@ The app is deployed to GitHub Pages from the `dist/` folder:
 npm run deploy
 ```
 
-The Vite `base` is set to `/holbertonschool-agentic_ai/` in `vite.config.js` to match the GitHub Pages sub-path. Update it if you fork the repository under a different name.
+The Vite `base` is set to `/holbertonschool-agentic_ai/react/` in `vite.config.js` to match the GitHub Pages sub-path. The `deploy` script publishes into the `react/` subfolder with `gh-pages -d dist -e react --add` — `-e react` isolates this site in its own subfolder and `--add` prevents it from wiping the sibling `vue/` deployment. Update the `base` and the `-e` target if you fork the repository under a different name.
 
 ## Author
 
