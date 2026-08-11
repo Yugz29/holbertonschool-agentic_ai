@@ -16,6 +16,6 @@ export default defineConfig({
     open: true,
   },
 
-  base: '/holbertonschool-agentic_ai/',
+  base: '/holbertonschool-agentic_ai/react/',
 
 })
