@@ -1,11 +1,23 @@
 <script setup>
-import { Sparkles } from "lucide-vue-next";
+import Header from "./components/layout/Header.vue";
+import Hero from "./components/sections/Hero.vue";
+import About from "./sections/About.vue";
+import Features from "./sections/Features.vue";
+import Insights from "./sections/Insights.vue";
+import Contact from "./sections/Contact.vue";
+import Footer from "./components/layout/Footer.vue";
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center gap-4 bg-gray-50 text-center px-4">
-    <Sparkles :size="48" class="text-indigo-500" />
-    <h1 class="text-4xl font-bold text-gray-800">Vue.js Migration Project</h1>
-    <h2 class="text-lg text-gray-500">Vite + TailwindCSS + Lucide Vue setup complete</h2>
+  <div class="bg-black">
+    <Header />
+    <main>
+      <Hero />
+      <About />
+      <Features />
+      <Insights />
+      <Contact />
+    </main>
+    <Footer />
   </div>
 </template>
