@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "Interstellar",
+    "category": "Science-fiction",
+    "rating": 8.7,
+    "year": 2014,
+    "duration": "2h49",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    "description": "Une équipe d’explorateurs voyage dans l’espace pour trouver une nouvelle chance pour l’humanité."
+  },
+  {
+    "id": 2,
+    "title": "The Batman",
+    "category": "Action",
+    "rating": 7.8,
+    "year": 2022,
+    "duration": "2h56",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    "description": "Batman enquête sur une série de crimes qui touche les élites de Gotham."
+  },
+  {
+    "id": 3,
+    "title": "Ratatouille",
+    "category": "Animation",
+    "rating": 8.1,
+    "year": 2007,
+    "duration": "1h51",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg",
+    "description": "Un jeune rat passionné de cuisine rêve de devenir un grand chef à Paris."
+  },
+  {
+    "id": 4,
+    "title": "Dune",
+    "category": "Science-fiction",
+    "rating": 8.0,
+    "year": 2021,
+    "duration": "2h35",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    "description": "Paul Atreides rejoint la planète Arrakis et se retrouve au cœur d’un conflit gigantesque."
+  },
+  {
+    "id": 5,
+    "title": "The Grand Budapest Hotel",
+    "category": "Comédie",
+    "rating": 8.1,
+    "year": 2014,
+    "duration": "1h39",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+    "description": "Les aventures d’un concierge légendaire et de son jeune protégé dans un hôtel européen."
+  },
+  {
+    "id": 6,
+    "title": "Spider-Man: Into the Spider-Verse",
+    "category": "Animation",
+    "rating": 8.4,
+    "year": 2018,
+    "duration": "1h57",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+    "description": "Miles Morales découvre qu’il n’est pas le seul Spider-Man et rencontre des héros venus d’autres dimensions."
+  },
+  {
+    "id": 7,
+    "title": "Mad Max: Fury Road",
+    "category": "Action",
+    "rating": 8.1,
+    "year": 2015,
+    "duration": "2h00",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/hA2ple9q4qnwxp3hKVNhroipsir.jpg",
+    "description": "Dans un monde post-apocalyptique, Max rejoint Furiosa dans une fuite spectaculaire à travers le désert."
+  },
+  {
+    "id": 8,
+    "title": "The Truman Show",
+    "category": "Comédie",
+    "rating": 8.2,
+    "year": 1998,
+    "duration": "1h43",
+    "favorite": false,
+    "image": "https://image.tmdb.org/t/p/w500/vuza0WqY239yBXOadKlGwJsZJFE.jpg",
+    "description": "Truman mène une vie paisible sans savoir que son quotidien est filmé depuis sa naissance."
+  }
+]
