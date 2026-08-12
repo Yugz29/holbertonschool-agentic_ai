@@ -9,7 +9,7 @@ Both apps are built with **Vite** + **Tailwind CSS** and deployed to a single Gi
 | Project | Status | URL |
 |---------|--------|-----|
 | **React** | Complete | https://yugz29.github.io/holbertonschool-agentic_ai/react/ |
-| **Vue** | In progress | https://yugz29.github.io/holbertonschool-agentic_ai/vue/ |
+| **Vue** | Complete | https://yugz29.github.io/holbertonschool-agentic_ai/vue/ |
 
 ## Repository structure
 
@@ -17,7 +17,7 @@ Both apps are built with **Vite** + **Tailwind CSS** and deployed to a single Gi
 holbertonschool-agentic_ai/
 └── front_end-frameworks/
     ├── react/    # Agentic AI landing page — React 19 + Vite + Tailwind (see its README)
-    └── vue/      # Agentic AI landing page — Vue 3 + Vite + Tailwind (port in progress)
+    └── vue/      # Agentic AI landing page — Vue 3 + Vite + Tailwind (see its README)
 ```
 
 Each project is self-contained with its own `package.json`, dependencies, and README. Start there for project-specific details, scripts, and structure:
