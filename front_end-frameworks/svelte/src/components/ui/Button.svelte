@@ -1,4 +1,5 @@
 <script>
+  /** @type {{ href?: string, variant?: string, class?: string, children?: import('svelte').Snippet }} */
   let {
     href,
     variant = "primary",

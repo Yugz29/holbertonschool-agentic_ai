@@ -1,4 +1,5 @@
 <script>
+  /** @type {{ line1: string, line2: string, variant?: string, accent?: string }} */
   let { line1, line2, variant = "section", accent } = $props();
 
   const isHero = $derived(variant === "hero");
