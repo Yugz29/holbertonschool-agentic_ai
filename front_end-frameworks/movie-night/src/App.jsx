@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AppHeader from "./components/AppHeader.jsx";
 import AppFooter from "./components/AppFooter.jsx";
+import MovieCard from "./components/MovieCard.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -65,14 +66,11 @@ function App() {
       );
     }
 
-    const plural = movies.length > 1 ? "s" : "";
-
     return (
-      <div className="rounded-2xl border border-white/10 bg-slate-900 px-6 py-8">
-        <p className="text-sm font-medium text-slate-400">
-          <span className="text-lg font-bold text-white">{movies.length}</span>{" "}
-          film{plural} chargé{plural}.
-        </p>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     );
   }
