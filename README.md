@@ -1,32 +1,30 @@
 # holbertonschool-agentic_ai
 
-Front-end coursework for the [Holberton School — Front-end Frameworks](https://github.com/fchavonet/curriculum-holbertonschool-front_end-frameworks) curriculum: the same **Agentic AI** landing page built three times, with **React**, **Vue** and **Svelte**, to compare component-driven architectures across three frameworks.
+Front-end coursework for the [Holberton School — Front-end Frameworks](https://github.com/fchavonet/curriculum-holbertonschool-front_end-frameworks) curriculum: the same **Agentic AI** landing page built three times — **React**, **Vue** and **Svelte** — to compare component-driven architectures across three frameworks.
 
-All three apps are built with **Vite** + **Tailwind CSS** and deployed to a single GitHub Pages site, each under its own subfolder.
+See [`front_end-frameworks/README.md`](front_end-frameworks/README.md) for the full picture of the sequence, and each project's own README for its stack, structure and scripts.
 
-## Live demos
+## Live demo
 
-| Project | Status | URL |
-|---------|--------|-----|
-| **React** | Complete | https://yugz29.github.io/holbertonschool-agentic_ai/react/ |
-| **Vue** | Complete | https://yugz29.github.io/holbertonschool-agentic_ai/vue/ |
-| **Svelte** | Complete | https://yugz29.github.io/holbertonschool-agentic_ai/svelte/ |
+🔗 **https://yugz29.github.io/holbertonschool-agentic_ai/**
+
+| Project | URL |
+|---------|-----|
+| React | https://yugz29.github.io/holbertonschool-agentic_ai/react/ |
+| Vue | https://yugz29.github.io/holbertonschool-agentic_ai/vue/ |
+| Svelte | https://yugz29.github.io/holbertonschool-agentic_ai/svelte/ |
 
 ## Repository structure
 
 ```
 holbertonschool-agentic_ai/
-└── front_end-frameworks/
-    ├── react/    # Agentic AI landing page — React 19 + Vite + Tailwind (see its README)
-    ├── vue/      # Agentic AI landing page — Vue 3 + Vite + Tailwind (see its README)
-    └── svelte/   # Agentic AI landing page — Svelte 5 + Vite + Tailwind (see its README)
+├── landing/                # Entry-point page for the GitHub Pages site (see its README)
+└── front_end-frameworks/   # The three framework implementations (see its README)
+    ├── react/
+    ├── vue/
+    ├── svelte/
+    └── movie-night/        # Separate one-off Vue.js exercise, not part of the framework sequence
 ```
-
-Each project is self-contained with its own `package.json`, dependencies, and README. Start there for project-specific details, scripts, and structure:
-
-- [`front_end-frameworks/react/README.md`](front_end-frameworks/react/README.md)
-- [`front_end-frameworks/vue/README.md`](front_end-frameworks/vue/README.md)
-- [`front_end-frameworks/svelte/README.md`](front_end-frameworks/svelte/README.md)
 
 ## Getting started
 
@@ -39,26 +37,11 @@ npm install
 npm run dev
 ```
 
-Swap `react` for `vue` or `svelte` to work on the other apps.
+Swap `react` for `vue`, `svelte` or `movie-night`.
 
-## Deployment — how all three apps share one GitHub Pages site
+## Deployment
 
-All three apps publish to the **`gh-pages`** branch of this repository, but into **separate subfolders** so none of them overwrites the others:
-
-| Project | Vite `base` | `deploy` script |
-|---------|-------------|-----------------|
-| React | `/holbertonschool-agentic_ai/react/` | `gh-pages -d dist -e react --add` |
-| Vue | `/holbertonschool-agentic_ai/vue/` | `gh-pages -d dist -e vue --add` |
-| Svelte | `/holbertonschool-agentic_ai/svelte/` | `gh-pages -d dist -e svelte --add` |
-
-Two `gh-pages` options make the coexistence work:
-
-- **`-e <folder>`** (alias of `--dest`) publishes `dist/` into a subfolder of the `gh-pages` branch (`react/`, `vue/` or `svelte/`) instead of the branch root, so their asset URLs never collide.
-- **`--add`** disables `gh-pages`' default behavior of wiping the destination before publishing. Without it, deploying one app would erase the others. With it, each deploy only adds/updates its own subfolder and leaves its siblings untouched.
-
-The Vite `base` of each app must match its subfolder path so the built `index.html` references its JS/CSS from the right location.
-
-> **Note:** because `--add` never removes files, previous content-hashed assets accumulate in each subfolder over time. This is harmless (each build's `index.html` points to the current hashes) — just occasional stale files.
+The landing page, React, Vue and Svelte all publish to the same `gh-pages` branch — the landing page at the branch root, each app into its own subfolder — without overwriting one another. Each has its own `deploy` script; see that project's README (or [`landing/README.md`](landing/README.md) for the landing page) for the exact command and how the coexistence works.
 
 ## Author
 
