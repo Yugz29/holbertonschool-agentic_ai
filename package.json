@@ -1,0 +1,11 @@
+{
+  "name": "landing",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "gh-pages -d . -o origin --add"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
