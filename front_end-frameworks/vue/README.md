@@ -91,7 +91,7 @@ npm install
 | `npm run fix` | Auto-fix ESLint issues | — |
 | `npm run deploy` | Build and publish to the `/vue/` subfolder of GitHub Pages | — |
 
-> **Auditing performance:** run Lighthouse against the **preview** build (`npm run preview`), not the dev server, for representative results.
+> **Auditing performance:** run Lighthouse against the **preview** build (`npm run preview`), not the dev server. The dev server ships unminified code with HMR and will always score poorly — that is expected and not representative of production.
 
 ## Deployment
 
@@ -101,7 +101,7 @@ The app is deployed to GitHub Pages from the `dist/` folder:
 npm run deploy
 ```
 
-The Vite `base` is set to `/holbertonschool-agentic_ai/vue/` in `vite.config.js` to match the GitHub Pages sub-path. The `deploy` script publishes into the `vue/` subfolder with `gh-pages -d dist -e vue --add` — `-e vue` isolates this site in its own subfolder and `--add` prevents it from wiping the sibling `react/` deployment. Update the `base` and the `-e` target if you fork the repository under a different name.
+The Vite `base` is set to `/holbertonschool-agentic_ai/vue/` in `vite.config.js` to match the GitHub Pages sub-path. The `deploy` script publishes into the `vue/` subfolder with `gh-pages -d dist -e vue --add` — `-e vue` isolates this site in its own subfolder and `--add` prevents it from wiping the sibling `react/` and `svelte/` deployments. Update the `base` and the `-e` target if you fork the repository under a different name.
 
 ## React → Vue migration notes
 

@@ -1,4 +1,4 @@
-# Agentic AI — Landing Page
+# Agentic AI — Landing Page (React)
 
 A responsive, dark-themed landing page for a fictional **Agentic AI** product, built with **React**, **Vite** and **Tailwind CSS**.
 
@@ -100,7 +100,7 @@ The app is deployed to GitHub Pages from the `dist/` folder:
 npm run deploy
 ```
 
-The Vite `base` is set to `/holbertonschool-agentic_ai/react/` in `vite.config.js` to match the GitHub Pages sub-path. The `deploy` script publishes into the `react/` subfolder with `gh-pages -d dist -e react --add` — `-e react` isolates this site in its own subfolder and `--add` prevents it from wiping the sibling `vue/` deployment. Update the `base` and the `-e` target if you fork the repository under a different name.
+The Vite `base` is set to `/holbertonschool-agentic_ai/react/` in `vite.config.js` to match the GitHub Pages sub-path. The `deploy` script publishes into the `react/` subfolder with `gh-pages -d dist -e react --add` — `-e react` isolates this site in its own subfolder and `--add` prevents it from wiping the sibling `vue/` and `svelte/` deployments. Update the `base` and the `-e` target if you fork the repository under a different name.
 
 ## Author
 

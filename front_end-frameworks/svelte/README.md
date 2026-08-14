@@ -91,7 +91,7 @@ npm install
 | `npm run fix` | Auto-fix ESLint issues | — |
 | `npm run deploy` | Build and publish to the `/svelte/` subfolder of GitHub Pages | — |
 
-> **Auditing performance:** run Lighthouse against the **preview** build (`npm run preview`), not the dev server, for representative results.
+> **Auditing performance:** run Lighthouse against the **preview** build (`npm run preview`), not the dev server. The dev server ships unminified code with HMR and will always score poorly — that is expected and not representative of production.
 
 ## Deployment
 
