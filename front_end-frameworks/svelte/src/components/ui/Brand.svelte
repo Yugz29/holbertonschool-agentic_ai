@@ -1,7 +1,6 @@
 <script>
   import { Sparkles } from "@lucide/svelte";
 
-  /** @type {{ href?: string, variant?: string }} */
   let { href, variant = "header" } = $props();
 
   const isHeader = $derived(variant === "header");

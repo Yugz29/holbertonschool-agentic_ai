@@ -1,9 +1,21 @@
 <script>
-  import { Sparkles } from '@lucide/svelte';
+  import Header from "./components/layout/Header.svelte";
+  import Hero from "./components/sections/Hero.svelte";
+  import About from "./sections/About.svelte";
+  import Features from "./sections/Features.svelte";
+  import Insights from "./sections/Insights.svelte";
+  import Contact from "./sections/Contact.svelte";
+  import Footer from "./components/layout/Footer.svelte";
 </script>
 
-<main class="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-950 text-white">
-  <Sparkles class="h-10 w-10 text-violet-400" />
-  <h1 class="text-4xl font-semibold">Svelte project setup</h1>
-  <h2 class="text-lg text-slate-400">Vite + Tailwind CSS + Lucide Svelte + ESLint</h2>
-</main>
+<div class="bg-black">
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Features />
+    <Insights />
+    <Contact />
+  </main>
+  <Footer />
+</div>
