@@ -3,11 +3,14 @@ import AppHeader from "./components/AppHeader.jsx";
 import AppFooter from "./components/AppFooter.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 
+const CATEGORIES = ["Tous", "Action", "Comédie", "Science-fiction", "Animation"];
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Tous");
 
   async function loadMovies() {
     setIsLoading(true);
@@ -37,9 +40,15 @@ function App() {
     loadMovies();
   }, []);
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredMovies = movies.filter((movie) => {
+    const matchesSearch = movie.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "Tous" || movie.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
 
   function renderContent() {
     if (isLoading) {
@@ -73,17 +82,36 @@ function App() {
 
     return (
       <div className="space-y-8">
-        <div className="relative">
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-500">
-            &#9906;
-          </span>
-          <input
-            type="search"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Rechercher un film..."
-            className="w-full rounded-xl border border-white/10 bg-slate-900 py-3 pl-12 pr-4 text-sm font-medium text-slate-100 placeholder:text-slate-500 focus:border-rose-500/50 focus:outline-none"
-          />
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+          <div className="relative lg:w-80">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-500">
+              &#9906;
+            </span>
+            <input
+              type="search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Rechercher un film..."
+              className="w-full rounded-xl border border-white/10 bg-slate-900 py-3 pl-12 pr-4 text-sm font-medium text-slate-100 placeholder:text-slate-500 focus:border-rose-500/50 focus:outline-none"
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+                  selectedCategory === category
+                    ? "bg-gradient-to-br from-rose-500 to-pink-600 text-white"
+                    : "border border-white/10 bg-slate-900 text-slate-300 hover:bg-white/5"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         {filteredMovies.length > 0 ? (
