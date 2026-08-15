@@ -11,6 +11,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
+  const [currentView, setCurrentView] = useState("films");
 
   async function loadMovies() {
     setIsLoading(true);
@@ -50,9 +51,55 @@ function App() {
     return matchesSearch && matchesCategory;
   });
 
+  const favoriteMovies = movies.filter((movie) => movie.favorite);
+  const favoritesCount = favoriteMovies.length;
+
   function resetFilters() {
     setSearch("");
     setSelectedCategory("Tous");
+  }
+
+  function toggleFavorite(movieId) {
+    setMovies((currentMovies) =>
+      currentMovies.map((movie) =>
+        movie.id === movieId ? { ...movie, favorite: !movie.favorite } : movie
+      )
+    );
+  }
+
+  function renderGrid(list) {
+    return (
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {list.map((movie) => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onToggleFavorite={toggleFavorite}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  function renderFavorites() {
+    if (favoriteMovies.length === 0) {
+      return (
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
+          <p className="text-sm font-medium text-slate-400">
+            Aucun favori pour le moment.
+          </p>
+          <button
+            type="button"
+            onClick={() => setCurrentView("films")}
+            className="rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+          >
+            Parcourir les films
+          </button>
+        </div>
+      );
+    }
+
+    return renderGrid(favoriteMovies);
   }
 
   function renderContent() {
@@ -83,6 +130,10 @@ function App() {
           </button>
         </div>
       );
+    }
+
+    if (currentView === "favorites") {
+      return renderFavorites();
     }
 
     return (
@@ -120,11 +171,7 @@ function App() {
         </div>
 
         {filteredMovies.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {filteredMovies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+          renderGrid(filteredMovies)
         ) : (
           <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
             <p className="text-sm font-medium text-slate-400">
@@ -145,7 +192,11 @@ function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
-      <AppHeader favoritesCount={0} />
+      <AppHeader
+        favoritesCount={favoritesCount}
+        currentView={currentView}
+        onNavigate={setCurrentView}
+      />
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12 lg:px-8">
         <section className="mb-10">

@@ -1,4 +1,9 @@
-function MovieCard({ movie }) {
+function MovieCard({ movie, onToggleFavorite }) {
+  function handleToggleFavorite(event) {
+    event.stopPropagation();
+    onToggleFavorite(movie.id);
+  }
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900 transition duration-300 hover:-translate-y-1 hover:border-white/20">
       <div className="relative aspect-[2/3] overflow-hidden bg-slate-800">
@@ -15,7 +20,11 @@ function MovieCard({ movie }) {
 
         <button
           type="button"
-          aria-label="Ajouter aux favoris"
+          onClick={handleToggleFavorite}
+          aria-pressed={movie.favorite}
+          aria-label={
+            movie.favorite ? "Retirer des favoris" : "Ajouter aux favoris"
+          }
           className={`absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-slate-950/80 text-lg backdrop-blur transition hover:bg-slate-950 ${
             movie.favorite ? "text-rose-500" : "text-slate-400"
           }`}
