@@ -52,7 +52,7 @@ function MovieDetails({ movie, onClose, onToggleFavorite }) {
           <img
             src={movie.image}
             alt={movie.title}
-            className="w-full shrink-0 rounded-xl bg-slate-800 object-cover md:w-56"
+            className="mx-auto w-40 shrink-0 rounded-xl bg-slate-800 object-cover sm:w-48 md:mx-0 md:w-56"
           />
 
           <div className="flex flex-1 flex-col gap-5">
