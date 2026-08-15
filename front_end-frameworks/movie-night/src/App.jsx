@@ -50,6 +50,11 @@ function App() {
     return matchesSearch && matchesCategory;
   });
 
+  function resetFilters() {
+    setSearch("");
+    setSelectedCategory("Tous");
+  }
+
   function renderContent() {
     if (isLoading) {
       return (
@@ -121,10 +126,17 @@ function App() {
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
             <p className="text-sm font-medium text-slate-400">
               Aucun film ne correspond à votre recherche.
             </p>
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+            >
+              Réinitialiser les filtres
+            </button>
           </div>
         )}
       </div>
