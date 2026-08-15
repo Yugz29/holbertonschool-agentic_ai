@@ -7,6 +7,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [search, setSearch] = useState("");
 
   async function loadMovies() {
     setIsLoading(true);
@@ -35,6 +36,10 @@ function App() {
   useEffect(() => {
     loadMovies();
   }, []);
+
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   function renderContent() {
     if (isLoading) {
@@ -67,10 +72,33 @@ function App() {
     }
 
     return (
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      <div className="space-y-8">
+        <div className="relative">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-500">
+            &#9906;
+          </span>
+          <input
+            type="search"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Rechercher un film..."
+            className="w-full rounded-xl border border-white/10 bg-slate-900 py-3 pl-12 pr-4 text-sm font-medium text-slate-100 placeholder:text-slate-500 focus:border-rose-500/50 focus:outline-none"
+          />
+        </div>
+
+        {filteredMovies.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {filteredMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
+            <p className="text-sm font-medium text-slate-400">
+              Aucun film ne correspond à votre recherche.
+            </p>
+          </div>
+        )}
       </div>
     );
   }
