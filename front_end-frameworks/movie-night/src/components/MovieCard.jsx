@@ -1,7 +1,12 @@
-function MovieCard({ movie, onToggleFavorite }) {
+function MovieCard({ movie, onToggleFavorite, onViewDetails }) {
   function handleToggleFavorite(event) {
     event.stopPropagation();
     onToggleFavorite(movie.id);
+  }
+
+  function handleViewDetails(event) {
+    event.stopPropagation();
+    onViewDetails(movie);
   }
 
   return (
@@ -48,6 +53,7 @@ function MovieCard({ movie, onToggleFavorite }) {
 
         <button
           type="button"
+          onClick={handleViewDetails}
           className="mt-auto rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
         >
           Voir le détail

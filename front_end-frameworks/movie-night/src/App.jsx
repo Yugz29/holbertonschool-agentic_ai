@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AppHeader from "./components/AppHeader.jsx";
 import AppFooter from "./components/AppFooter.jsx";
 import MovieCard from "./components/MovieCard.jsx";
+import MovieDetails from "./components/MovieDetails.jsx";
 
 const CATEGORIES = ["Tous", "Action", "Comédie", "Science-fiction", "Animation"];
 
@@ -12,6 +13,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [currentView, setCurrentView] = useState("films");
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   async function loadMovies() {
     setIsLoading(true);
@@ -53,6 +55,9 @@ function App() {
 
   const favoriteMovies = movies.filter((movie) => movie.favorite);
   const favoritesCount = favoriteMovies.length;
+  const openedMovie = selectedMovie
+    ? movies.find((movie) => movie.id === selectedMovie.id)
+    : null;
 
   function resetFilters() {
     setSearch("");
@@ -75,6 +80,7 @@ function App() {
             key={movie.id}
             movie={movie}
             onToggleFavorite={toggleFavorite}
+            onViewDetails={setSelectedMovie}
           />
         ))}
       </div>
@@ -212,6 +218,14 @@ function App() {
       </main>
 
       <AppFooter />
+
+      {openedMovie && (
+        <MovieDetails
+          movie={openedMovie}
+          onClose={() => setSelectedMovie(null)}
+          onToggleFavorite={toggleFavorite}
+        />
+      )}
     </div>
   );
 }
