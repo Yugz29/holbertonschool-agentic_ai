@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AppHeader from "./components/AppHeader.jsx";
 import AppFooter from "./components/AppFooter.jsx";
+import Hero from "./components/Hero.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
 
@@ -54,6 +55,7 @@ function App() {
   });
 
   const favoriteMovies = movies.filter((movie) => movie.favorite);
+  const coupsDeCoeur = movies.filter((movie) => movie.coupDeCoeur);
   const favoritesCount = favoriteMovies.length;
   const openedMovie = selectedMovie
     ? movies.find((movie) => movie.id === selectedMovie.id)
@@ -90,14 +92,14 @@ function App() {
   function renderFavorites() {
     if (favoriteMovies.length === 0) {
       return (
-        <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
-          <p className="text-sm font-medium text-slate-400">
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-surface px-6 py-16 text-center">
+          <p className="text-sm font-medium text-muted">
             Aucun favori pour le moment.
           </p>
           <button
             type="button"
             onClick={() => setCurrentView("films")}
-            className="rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+            className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-text transition hover:opacity-90"
           >
             Parcourir les films
           </button>
@@ -111,9 +113,9 @@ function App() {
   function renderContent() {
     if (isLoading) {
       return (
-        <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16">
-          <span className="h-10 w-10 animate-spin rounded-full border-4 border-white/10 border-t-rose-500" />
-          <p className="text-sm font-medium text-slate-400">
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-surface px-6 py-16">
+          <span className="h-10 w-10 animate-spin rounded-full border-4 border-white/10 border-t-accent" />
+          <p className="text-sm font-medium text-muted">
             Chargement des films...
           </p>
         </div>
@@ -122,15 +124,15 @@ function App() {
 
     if (errorMessage) {
       return (
-        <div className="flex flex-col items-center gap-4 rounded-2xl border border-rose-500/30 bg-slate-900 px-6 py-16 text-center">
-          <p className="text-lg font-semibold text-white">
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-accent/30 bg-surface px-6 py-16 text-center">
+          <p className="text-lg font-semibold text-text">
             Oups, le catalogue n'a pas pu être chargé.
           </p>
-          <p className="text-sm text-slate-400">{errorMessage}</p>
+          <p className="text-sm text-muted">{errorMessage}</p>
           <button
             type="button"
             onClick={loadMovies}
-            className="rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+            className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-text hover:opacity-90"
           >
             Réessayer
           </button>
@@ -144,9 +146,11 @@ function App() {
 
     return (
       <div className="space-y-8">
+        <Hero featuredMovies={coupsDeCoeur} />
+
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
           <div className="relative lg:w-80">
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-slate-500">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-muted">
               &#9906;
             </span>
             <input
@@ -154,7 +158,7 @@ function App() {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Rechercher un film..."
-              className="w-full rounded-xl border border-white/10 bg-slate-900 py-3 pl-12 pr-4 text-sm font-medium text-slate-100 placeholder:text-slate-500 focus:border-rose-500/50 focus:outline-none"
+              className="w-full rounded-xl border border-white/10 bg-surface py-3 pl-12 pr-4 text-sm font-medium text-text placeholder:text-muted focus:border-accent/50 focus:outline-none"
             />
           </div>
 
@@ -166,8 +170,8 @@ function App() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
                   selectedCategory === category
-                    ? "bg-gradient-to-br from-rose-500 to-pink-600 text-white"
-                    : "border border-white/10 bg-slate-900 text-slate-300 hover:bg-white/5"
+                    ? "bg-accent text-text"
+                    : "border border-white/10 bg-surface text-muted hover:bg-white/5"
                 }`}
               >
                 {category}
@@ -179,14 +183,14 @@ function App() {
         {filteredMovies.length > 0 ? (
           renderGrid(filteredMovies)
         ) : (
-          <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-slate-900 px-6 py-16 text-center">
-            <p className="text-sm font-medium text-slate-400">
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-surface px-6 py-16 text-center">
+            <p className="text-sm font-medium text-muted">
               Aucun film ne correspond à votre recherche.
             </p>
             <button
               type="button"
               onClick={resetFilters}
-              className="rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-text transition hover:opacity-90"
             >
               Réinitialiser les filtres
             </button>
@@ -197,7 +201,7 @@ function App() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen flex-col bg-bg font-sans text-text">
       <AppHeader
         favoritesCount={favoritesCount}
         currentView={currentView}
@@ -206,10 +210,10 @@ function App() {
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12 lg:px-8">
         <section className="mb-10">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white">
+          <h1 className="font-display text-5xl uppercase tracking-[0.12em] text-text">
             Que voulez-vous regarder ce soir ?
           </h1>
-          <p className="mt-3 text-lg text-slate-400">
+          <p className="mt-3 text-lg text-muted">
             Parcourez, filtrez et gardez vos films préférés.
           </p>
         </section>

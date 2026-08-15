@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0b0d;
+  --color-surface: #18181b;
+  --color-accent: #e0263c;
+  --color-accent-soft: rgba(224, 38, 60, 0.15);
+  --color-text: #f5f5f1;
+  --color-muted: #9c9c9f;
+  --color-gold: #d4af37;
+  --font-display: "Bebas Neue", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+}
