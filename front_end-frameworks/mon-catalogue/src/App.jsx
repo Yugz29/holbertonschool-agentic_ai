@@ -5,14 +5,11 @@ import Hero from "./components/Hero.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 import MovieDetails from "./components/MovieDetails.jsx";
 
-const CATEGORIES = ["Tous", "Action", "Comédie", "Science-fiction", "Animation"];
-
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [search, setSearch] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [currentView, setCurrentView] = useState("films");
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -44,27 +41,20 @@ function App() {
     loadMovies();
   }, []);
 
-  const filteredMovies = movies.filter((movie) => {
-    const matchesSearch = movie.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "Tous" || movie.category === selectedCategory;
+  const sortedMovies = [...movies].sort((a, b) =>
+    (b.watchedOn || "").localeCompare(a.watchedOn || "")
+  );
 
-    return matchesSearch && matchesCategory;
-  });
+  const filteredMovies = sortedMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  );
 
-  const favoriteMovies = movies.filter((movie) => movie.favorite);
-  const coupsDeCoeur = movies.filter((movie) => movie.coupDeCoeur);
+  const favoriteMovies = sortedMovies.filter((movie) => movie.favorite);
+  const coupsDeCoeur = sortedMovies.filter((movie) => movie.coupDeCoeur);
   const favoritesCount = favoriteMovies.length;
   const openedMovie = selectedMovie
     ? movies.find((movie) => movie.id === selectedMovie.id)
     : null;
-
-  function resetFilters() {
-    setSearch("");
-    setSelectedCategory("Tous");
-  }
 
   function toggleFavorite(movieId) {
     setMovies((currentMovies) =>
@@ -76,7 +66,7 @@ function App() {
 
   function renderGrid(list) {
     return (
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {list.map((movie) => (
           <MovieCard
             key={movie.id}
@@ -107,7 +97,15 @@ function App() {
       );
     }
 
-    return renderGrid(favoriteMovies);
+    return (
+      <div className="space-y-8">
+        <h1 className="font-display text-4xl uppercase tracking-[0.12em] text-text">
+          Mes favoris
+        </h1>
+
+        {renderGrid(favoriteMovies)}
+      </div>
+    );
   }
 
   function renderContent() {
@@ -146,10 +144,12 @@ function App() {
 
     return (
       <div className="space-y-8">
-        <Hero featuredMovies={coupsDeCoeur} />
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <h1 className="font-display text-4xl uppercase tracking-[0.12em] text-text">
+            Tous les films
+          </h1>
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-          <div className="relative lg:w-80">
+          <div className="relative w-full lg:w-96">
             <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-lg text-muted">
               &#9906;
             </span>
@@ -160,23 +160,6 @@ function App() {
               placeholder="Rechercher un film..."
               className="w-full rounded-xl border border-white/10 bg-surface py-3 pl-12 pr-4 text-sm font-medium text-text placeholder:text-muted focus:border-accent/50 focus:outline-none"
             />
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setSelectedCategory(category)}
-                className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
-                  selectedCategory === category
-                    ? "bg-accent text-text"
-                    : "border border-white/10 bg-surface text-muted hover:bg-white/5"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
           </div>
         </div>
 
@@ -189,16 +172,18 @@ function App() {
             </p>
             <button
               type="button"
-              onClick={resetFilters}
+              onClick={() => setSearch("")}
               className="rounded-xl bg-accent px-5 py-3 text-sm font-semibold text-text transition hover:opacity-90"
             >
-              Réinitialiser les filtres
+              Réinitialiser la recherche
             </button>
           </div>
         )}
       </div>
     );
   }
+
+  const showHero = currentView === "films" && !isLoading && !errorMessage;
 
   return (
     <div className="flex min-h-screen flex-col bg-bg font-sans text-text">
@@ -208,17 +193,10 @@ function App() {
         onNavigate={setCurrentView}
       />
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-12 lg:px-8">
-        <section className="mb-10">
-          <h1 className="font-display text-5xl uppercase tracking-[0.12em] text-text">
-            Que voulez-vous regarder ce soir ?
-          </h1>
-          <p className="mt-3 text-lg text-muted">
-            Parcourez, filtrez et gardez vos films préférés.
-          </p>
-        </section>
+      <main className="w-full flex-1">
+        {showHero && <Hero featuredMovies={coupsDeCoeur} />}
 
-        {renderContent()}
+        <div className="w-full px-4 py-10 md:px-8">{renderContent()}</div>
       </main>
 
       <AppFooter />

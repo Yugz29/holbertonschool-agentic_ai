@@ -24,16 +24,23 @@ function Hero({ featuredMovies }) {
   const currentMovie = featuredMovies[currentIndex % featuredMovies.length];
 
   return (
-    <section className="relative h-96 w-full overflow-hidden rounded-2xl border border-white/10 bg-surface lg:h-[70vh]">
+    <section className="relative isolate h-96 w-full overflow-hidden border-b border-white/10 bg-surface lg:h-[70vh]">
       <div
         key={currentMovie.id}
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${currentMovie.backdropImage})` }}
       />
 
+      <div
+        className="absolute inset-0 mix-blend-multiply"
+        style={{
+          backgroundImage: `linear-gradient(to top, ${currentMovie.themeColor}E6, transparent 65%)`,
+        }}
+      />
+
       <div className="absolute inset-0 bg-gradient-to-t from-bg via-accent-soft to-transparent" />
 
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 p-6 sm:p-8 lg:p-10">
+      <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 px-4 pb-16 pt-6 md:px-8 lg:pb-20">
         <span className="flex items-center gap-2 rounded-full bg-accent px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-text">
           <span className="text-gold">&#9829;</span>
           <span>Coup de cœur</span>
