@@ -13,6 +13,7 @@ See [`front_end-frameworks/README.md`](front_end-frameworks/README.md) for the f
 | React | https://yugz29.github.io/holbertonschool-agentic_ai/react/ |
 | Vue | https://yugz29.github.io/holbertonschool-agentic_ai/vue/ |
 | Svelte | https://yugz29.github.io/holbertonschool-agentic_ai/svelte/ |
+| Movie Night *(side project)* | https://yugz29.github.io/holbertonschool-agentic_ai/movie-night/ |
 
 ## Repository structure
 
@@ -23,7 +24,8 @@ holbertonschool-agentic_ai/
     ├── react/
     ├── vue/
     ├── svelte/
-    └── movie-night/        # Separate one-off Vue.js exercise, not part of the framework sequence
+    ├── movie-night/        # Standalone React exercise (PLD), not part of the framework sequence
+    └── mon-catalogue/      # Personal fork of movie-night, also outside the sequence
 ```
 
 ## Getting started
@@ -37,16 +39,8 @@ npm install
 npm run dev
 ```
 
-Swap `react` for `vue`, `svelte` or `movie-night`.
+Swap `react` for `vue`, `svelte`, `movie-night` or `mon-catalogue`.
 
 ## Deployment
 
-The landing page, React, Vue and Svelte all publish to the same `gh-pages` branch — the landing page at the branch root, each app into its own subfolder — without overwriting one another. Each has its own `deploy` script; see that project's README (or [`landing/README.md`](landing/README.md) for the landing page) for the exact command and how the coexistence works.
-
-## Author
-
-**Yann Duzelier** — [@Yugz29](https://github.com/Yugz29)
-
-## Acknowledgements
-
-Built for the [Holberton School — Front-end Frameworks](https://github.com/fchavonet/curriculum-holbertonschool-front_end-frameworks) curriculum. Reference mockup by [@fchavonet](https://github.com/fchavonet).
+The landing page and every app (React, Vue, Svelte, Movie Night) publish to the same `gh-pages` branch — the landing page at the branch root, each app into its own subfolder — without overwriting one another. Each has its own `deploy` script; see that project's README (or [`landing/README.md`](landing/README.md) for the landing page) for the exact command and how the coexistence works.

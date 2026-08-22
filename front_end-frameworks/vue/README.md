@@ -119,11 +119,3 @@ This app was migrated from the [React version](../react/) as part of the curricu
 | controlled inputs (`value` + `onChange`) | `v-model` |
 | `children` | `<slot />` |
 | dynamic tag/component (`const Tag = ...`) | `<component :is="...">` |
-
-## Author
-
-**Yann Duzelier** — [@Yugz29](https://github.com/Yugz29)
-
-## Acknowledgements
-
-Built for the [Holberton School — Front-end Frameworks](https://github.com/fchavonet/curriculum-holbertonschool-front_end-frameworks) curriculum. Reference mockup by [@fchavonet](https://github.com/fchavonet). React version migrated with AI-assisted development tools.

@@ -21,8 +21,11 @@ The point isn't to rank React, Vue and Svelte against each other — it's to bui
 Each migrated project (Vue, Svelte) includes its own `comparison.md` at its root, analyzing its implementation against the previous framework(s) — components, templates, props, state management, lifecycle, rendering, forms, events, project organization, and the AI-assisted migration process itself:
 
 - [`vue/comparison.md`](vue/comparison.md)
-- `svelte/comparison.md` *(added once that task is reached)*
+- [`svelte/comparison.md`](svelte/comparison.md)
 
 ## Also in this directory
 
-- [`movie-night/`](movie-night/) — a separate, one-off Vue 3 exercise (a PLD: a short group session building a small movie-browsing app), unrelated to the React → Vue → Svelte sequence above and not deployed alongside it.
+Two standalone React apps, unrelated to the React → Vue → Svelte sequence above. Each has its own README, its own data and its own GitHub Pages subfolder:
+
+- [`movie-night/`](movie-night/) — a one-off PLD exercise (a short group session building a small movie-browsing app: search, category filters, favorites, detail modal). Scaffolded as a Vue project during the session, rebuilt in React right after.
+- [`mon-catalogue/`](mon-catalogue/) — a personal fork of `movie-night`: same architecture, but a personal-catalog schema (own rating, watch date, notes), a coup-de-cœur hero carousel, a design-token theme, and entries imported from the TMDB API.
